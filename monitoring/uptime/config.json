@@ -1,0 +1,26 @@
+{
+  "monitors": [
+    {
+      "name": "Relay API",
+      "url": "https://relay.payperprompt.com/health",
+      "interval": 300,
+      "timeout": 30
+    },
+    {
+      "name": "Web Interface",
+      "url": "https://payperprompt.com",
+      "interval": 300,
+      "timeout": 30
+    },
+    {
+      "name": "Analytics Dashboard",
+      "url": "https://analytics.payperprompt.com",
+      "interval": 600,
+      "timeout": 30
+    }
+  ],
+  "notifications": {
+    "email": "alerts@payperprompt.com",
+    "slack_webhook": ""
+  }
+}

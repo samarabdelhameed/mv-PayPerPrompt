@@ -1,0 +1,56 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Aptos CLI
+        run: |
+          curl -fsSL "https://aptos.dev/scripts/install_cli.py" | python3
+      - name: Compile Move contracts
+        run: |
+          cd contract
+          aptos move compile
+      - name: Run Move tests
+        run: |
+          cd contract
+          aptos move test
+
+  test-relay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: |
+          cd relay
+          npm install
+      - name: Run tests
+        run: |
+          cd relay
+          npm test
+
+  test-web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: |
+          cd web
+          npm install
+      - name: Build
+        run: |
+          cd web
+          npm run build

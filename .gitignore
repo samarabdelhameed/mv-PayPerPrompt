@@ -1,0 +1,15 @@
+node_modules/
+dist/
+build/
+.env
+.env.local
+*.log
+.DS_Store
+.aptos/
+.movement/
+target/
+*.swp
+*.swo
+coverage/
+.vscode/
+.idea/
