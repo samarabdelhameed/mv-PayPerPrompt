@@ -1,25 +1,68 @@
 # PayPerPrompt
 
-A decentralized AI payment infrastructure built on Move 2, implementing the x402 payment standard for seamless AI agent monetization.
+> Decentralized AI agent payment infrastructure on Movement blockchain - implementing x402 payment standard for seamless agent monetization.
 
-## 🏗️ Architecture
+## 🌟 Overview
 
-- **contract/**: Move 2 smart contracts (agent registry, payment splitting, fee management, x402 invoice handling)
-- **web/**: Web 2.5 user interface (React + TypeScript + Vite)
-- **relay/**: AI-to-blockchain gateway with x402 routing
-- **analytics/**: Real-time indexing and metrics dashboard
-- **mobile/**: Telegram bot and PWA for mobile-first adoption
-- **audit/**: Security documentation and risk mitigation
-- **monitoring/**: Uptime monitoring and health checks
-- **docs/**: Architecture diagrams and workflow documentation
+PayPerPrompt is a decentralized payment infrastructure built on Movement blockchain with Move 2 smart contracts. It enables AI agent monetization through automated payment processing and the x402 payment standard.
 
-## ✨ Key Features
+### Key Features
 
-- **Agent Registry**: Entity registration with reputation tracking
-- **Payment Splitting**: Automated 85/15 revenue distribution
-- **x402 Standard**: Full invoice handling implementation
-- **Rate Limiting**: Spam protection and abuse prevention
-- **Live Analytics**: Real-time metrics and event indexing
+- **Agent Registry**: Entity registration with reputation tracking and performance metrics
+- **Payment Splitting**: Automated 85/15 revenue distribution (agent/platform)
+- **x402 Standard**: Full invoice handling and payment verification
+- **Rate Limiting**: Built-in spam protection and abuse prevention
+- **Live Analytics**: Real-time blockchain event indexing and metrics dashboard
+
+## 🏗️ Project Structure
+
+```
+PayPerPrompt/
+├── contract/                    # Move 2 Smart Contracts
+│   ├── sources/
+│   │   ├── AgentRegistry.move
+│   │   ├── PaymentSplitter.move
+│   │   ├── FeeManager.move
+│   │   └── X402InvoiceHandler.move
+│   ├── tests/                   # Unit tests
+│   ├── scripts/
+│   │   ├── deploy.ts
+│   │   └── verify_all.sh
+│   └── Move.toml
+├── relay/                       # AI-to-Blockchain Gateway
+│   ├── src/
+│   │   ├── index.js
+│   │   ├── x402Router.js
+│   │   ├── AgentAPI.js
+│   │   ├── rate_limiter.ts
+│   │   └── abuse_protection.ts
+│   ├── package.json
+│   └── .env.example
+├── web/                         # Frontend (React + TypeScript + Vite)
+│   ├── src/
+│   │   ├── App.tsx
+│   │   ├── main.tsx
+│   │   └── index.css
+│   ├── index.html
+│   ├── package.json
+│   └── vite.config.ts
+├── analytics/                   # Real-time Event Indexer
+│   ├── indexer.ts
+│   ├── dashboard/
+│   ├── package.json
+│   └── tsconfig.json
+├── mobile/
+│   ├── telegram_bot/            # Telegram Bot Integration
+│   └── pwa/                     # Progressive Web App
+├── monitoring/
+│   └── uptime/                  # Uptime Monitoring
+├── audit/
+│   └── AUDIT.md                 # Security Documentation
+├── docs/
+│   └── Architecture.md          # Architecture Diagrams
+├── START_ALL.sh                 # Start all services
+└── TEST_ALL.sh                  # Run all tests
+```
 
 ## 🚀 Quick Start
 
@@ -31,236 +74,241 @@ A decentralized AI payment infrastructure built on Move 2, implementing the x402
 
 ### Installation
 
-1. **Clone the repository**
 ```bash
+# Clone repository
 git clone <repository-url>
 cd PayPerPrompt
-```
 
-2. **Install dependencies for all components**
-```bash
-# Install Relay Server dependencies
-cd relay && npm install && cd ..
-
-# Install Web Interface dependencies
-cd web && npm install && cd ..
-
-# Install Analytics dependencies
-cd analytics && npm install && cd ..
-
-# Install Telegram Bot dependencies
-cd mobile/telegram_bot && npm install && cd ..
-```
-
-3. **Install Aptos CLI** (for smart contracts)
-```bash
+# Install Aptos CLI
 curl -fsSL "https://aptos.dev/scripts/install_cli.py" | python3
+
+# Install all dependencies
+cd relay && npm install && cd ..
+cd web && npm install && cd ..
+cd analytics && npm install && cd ..
+cd mobile/telegram_bot && npm install && cd ..
 ```
 
 ### Configuration
 
-1. **Setup Relay Server environment**
+**Relay Server** (`relay/.env`):
 ```bash
-cd relay
-cp .env.example .env
-# Edit .env with your configuration:
-# - APTOS_NODE_URL
-# - CONTRACT_ADDRESS
-# - PLATFORM_ADDRESS
+cp relay/.env.example relay/.env
+# Configure:
+# - APTOS_NODE_URL=https://fullnode.devnet.aptoslabs.com
+# - CONTRACT_ADDRESS=0x1
+# - PLATFORM_ADDRESS=0x2
+# - PORT=3000
 ```
 
-2. **Setup Telegram Bot** (optional)
-```bash
-cd mobile/telegram_bot
-cp .env.example .env
-# Add your TELEGRAM_BOT_TOKEN
-```
+### Running the Platform
 
-### Running the Project
-
-#### Option 1: Start All Services at Once
+**Option 1: Start All Services**
 ```bash
 ./START_ALL.sh
 ```
 
-#### Option 2: Start Services Individually
+**Option 2: Individual Services**
 
-**1. Deploy Smart Contracts**
 ```bash
+# 1. Deploy Smart Contracts
 cd contract
 aptos move compile
 aptos move test
 ./scripts/verify_all.sh
-# Deploy to testnet/mainnet
 aptos move publish --package-dir .
+
+# 2. Start Relay Server (Port 3000)
+cd relay && npm start
+
+# 3. Start Web Interface (Port 5173)
+cd web && npm run dev
+
+# 4. Start Analytics Indexer
+cd analytics && npm start
 ```
 
-**2. Start Relay Server**
-```bash
-cd relay
-npm start
-# Server runs on http://localhost:3000
-```
+## 📡 API Reference
 
-**3. Start Web Interface**
-```bash
-cd web
-npm run dev
-# Interface runs on http://localhost:5173
-```
+### Relay Server Endpoints (Port 3000)
 
-**4. Start Analytics Indexer**
-```bash
-cd analytics
-npm start
-# Indexer starts monitoring blockchain events
-```
-
-**5. Start Telegram Bot** (optional)
-```bash
-cd mobile/telegram_bot
-npm start
-```
-
-## 📡 API Endpoints
-
-### Relay Server (Port 3000)
-
-- `GET /health` - Health check
-- `POST /api/invoice` - Create x402 invoice
-- `POST /api/pay/:invoiceId` - Process payment
-- `GET /api/agents` - List registered agents
-- `GET /api/metrics` - Get platform metrics
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/health` | GET | Health check |
+| `/api/invoice` | POST | Create x402 invoice |
+| `/api/pay/:invoiceId` | POST | Process payment |
+| `/api/agents` | GET | List registered agents |
+| `/api/metrics` | GET | Platform metrics |
 
 ### Web Interface (Port 5173)
 
-- Dashboard for agent discovery
-- Wallet connection (Aptos)
+- Agent discovery dashboard
+- Aptos wallet connection
 - Payment processing UI
-- Analytics visualization
+- Real-time analytics visualization
 
-## 🧪 Testing
+## ⚙️ System Architecture
 
-Run all tests:
-```bash
-./TEST_ALL.sh
+```mermaid
+graph TB
+    subgraph "Frontend Layer"
+        A[Web Interface<br/>React + Vite]
+        B[Telegram Bot]
+        C[PWA]
+    end
+    
+    subgraph "Gateway Layer"
+        D[Relay Server<br/>Node.js]
+        E[x402 Router]
+        F[Rate Limiter]
+        G[Abuse Protection]
+    end
+    
+    subgraph "Blockchain Layer - Movement"
+        H[X402InvoiceHandler.move<br/>Invoice Processing]
+        I[PaymentSplitter.move<br/>85/15 Revenue Split]
+        J[AgentRegistry.move<br/>Agent Management]
+        K[FeeManager.move<br/>Fee Configuration]
+    end
+    
+    subgraph "Analytics Layer"
+        L[Event Indexer]
+        M[Analytics Dashboard]
+    end
+    
+    A --> D
+    B --> D
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H --> I
+    I --> J
+    J --> K
+    K --> L
+    L --> M
+    
+    style H fill:#e1f5ff
+    style I fill:#e1f5ff
+    style J fill:#e1f5ff
+    style K fill:#e1f5ff
 ```
 
-Or test individual components:
-```bash
-# Test smart contracts
-cd contract && aptos move test
+## 💳 Payment Transaction Flow
 
-# Test relay server
-cd relay && npm test
-
-# Test web build
-cd web && npm run build
-```
-
-## 📊 Project Structure
-
-```
-PayPerPrompt/
-├── contract/              # Move 2 Smart Contracts
-│   ├── sources/
-│   │   ├── AgentRegistry.move
-│   │   ├── PaymentSplitter.move
-│   │   ├── FeeManager.move
-│   │   └── X402InvoiceHandler.move
-│   ├── tests/
-│   └── scripts/
-├── relay/                 # Backend Gateway
-│   └── src/
-│       ├── x402Router.js
-│       ├── AgentAPI.js
-│       ├── rate_limiter.ts
-│       └── abuse_protection.ts
-├── web/                   # Frontend Interface
-│   └── src/
-│       ├── App.tsx
-│       └── main.tsx
-├── analytics/             # Event Indexing
-│   ├── indexer.ts
-│   └── dashboard/
-├── mobile/
-│   ├── telegram_bot/      # Telegram Integration
-│   └── pwa/               # Progressive Web App
-├── audit/                 # Security Documentation
-├── monitoring/            # Uptime Monitoring
-└── docs/                  # Architecture Docs
+```mermaid
+sequenceDiagram
+    participant User
+    participant Web as Web Interface
+    participant Relay as Relay Server
+    participant X402 as X402InvoiceHandler
+    participant Split as PaymentSplitter
+    participant Registry as AgentRegistry
+    participant Analytics as Event Indexer
+    
+    User->>Web: Submit AI Request
+    Web->>Relay: POST /api/invoice
+    Relay->>Relay: Calculate Cost
+    Relay->>X402: Create Invoice
+    X402->>X402: Validate & Store
+    X402-->>Relay: Invoice ID
+    Relay-->>Web: Invoice Details
+    
+    Web->>User: Display Payment Request
+    User->>Web: Approve Payment
+    Web->>Relay: POST /api/pay/:invoiceId
+    Relay->>X402: Process Payment
+    X402->>Split: Transfer Funds
+    Split->>Split: Split 85/15
+    Split->>Registry: Update Agent Stats
+    Registry->>Registry: Increment Reputation
+    Registry-->>Analytics: Emit Event
+    Analytics->>Analytics: Index Transaction
+    
+    X402-->>Relay: Payment Confirmed
+    Relay->>Relay: Execute AI Service
+    Relay-->>Web: AI Result + Receipt
+    Web-->>User: Display Result
 ```
 
 ## 🔐 Security
 
-- Rate limiting: 100 requests/minute per IP
-- Spending caps: Daily limits per user
-- Abuse protection: Auto-blocking after 5 failed attempts
-- Smart contract auditing recommended before mainnet
+### Design Patterns
 
-See [AUDIT.md](audit/AUDIT.md) for detailed security documentation.
+- **Separation of Concerns**: Modular contract architecture (Registry, Splitter, FeeManager)
+- **Access Control**: Platform-owner restricted functions using Move authorization
+- **Rate Limiting**: 100 requests/minute per IP with auto-blocking after 5 failed attempts
+- **Spending Caps**: Daily limits per user to prevent abuse
+
+### Attack Mitigation
+
+| Attack Vector | Protection |
+|---------------|------------|
+| Reentrancy (SWC-107) | Move language inherent protection |
+| Gas Exhaustion (SWC-128) | O(1) complexity functions, no large loops |
+| Unauthorized Access | Move-based access control patterns |
+
+See [AUDIT.md](audit/AUDIT.md) for comprehensive security documentation.
+
+## 🧪 Testing
+
+```bash
+# Run all tests
+./TEST_ALL.sh
+
+# Individual component tests
+cd contract && aptos move test
+cd relay && npm test
+cd web && npm run build
+```
 
 ## 🛠️ Development
 
 ### Build for Production
 
 ```bash
-# Build web interface
+# Web interface
 cd web && npm run build
 
-# Compile contracts
+# Smart contracts
 cd contract && aptos move compile
-
-# Build relay (if using TypeScript)
-cd relay && npx tsc
 ```
 
-### Environment Variables
+### Monitoring
 
-**Relay Server** (`relay/.env`):
-```env
-APTOS_NODE_URL=https://fullnode.devnet.aptoslabs.com
-CONTRACT_ADDRESS=0x1
-PLATFORM_ADDRESS=0x2
-PORT=3000
-RATE_LIMIT_WINDOW_MS=60000
-RATE_LIMIT_MAX_REQUESTS=100
+```bash
+# Health check
+curl http://localhost:3000/health
+
+# Platform metrics
+curl http://localhost:3000/api/metrics
+
+# Analytics dashboard
+open analytics/dashboard/index.html
 ```
 
-**Telegram Bot** (`mobile/telegram_bot/.env`):
-```env
-TELEGRAM_BOT_TOKEN=your_token_here
-RELAY_URL=http://localhost:3000
-```
+## 📚 Documentation
 
-## 📈 Monitoring
-
-- **Health Check**: `curl http://localhost:3000/health`
-- **Metrics**: `curl http://localhost:3000/api/metrics`
-- **Analytics Dashboard**: Open `analytics/dashboard/index.html`
+- [Architecture Documentation](docs/Architecture.md)
+- [Security Audit](audit/AUDIT.md)
 
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open Pull Request
 
 ## 📝 License
 
-MIT
-
-## 🔗 Links
-
-- [Architecture Documentation](docs/Architecture.md)
-- [Security Audit](audit/AUDIT.md)
-- [Setup Status](SETUP_STATUS.md)
+MIT License - see LICENSE file for details
 
 ## 💡 Support
 
-For issues and questions, please open an issue on GitHub.
+For issues and questions, open an issue on GitHub.
 
 ---
 
-Built with ❤️ for the decentralized AI economy
+**Built with ❤️ for the decentralized AI economy**
