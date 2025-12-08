@@ -1,0 +1,38 @@
+{
+  "name": "payperprompt-contracts",
+  "version": "1.0.0",
+  "description": "Smart contracts for PayPerPrompt - Autonomous AI Agent Economy",
+  "main": "scripts/deploy.js",
+  "scripts": {
+    "build": "aptos move compile",
+    "test": "aptos move test",
+    "deploy": "ts-node scripts/deploy.ts",
+    "deploy:testnet": "NODE_URL=https://testnet.aptoslabs.com ts-node scripts/deploy.ts",
+    "deploy:mainnet": "NODE_URL=https://mainnet.aptoslabs.com ts-node scripts/deploy.ts",
+    "verify": "bash scripts/verify_all.sh",
+    "generate-types": "aptos move generate-abi && node scripts/generate-types.js",
+    "lint": "eslint scripts/**/*.ts",
+    "format": "prettier --write scripts/**/*.ts"
+  },
+  "dependencies": {
+    "aptos": "^1.17.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.0",
+    "typescript": "^5.2.2",
+    "ts-node": "^10.9.1",
+    "eslint": "^8.50.0",
+    "prettier": "^3.0.3"
+  },
+  "keywords": [
+    "movement",
+    "move",
+    "blockchain",
+    "ai",
+    "agents",
+    "micropayments"
+  ],
+  "author": "PayPerPrompt Team",
+  "license": "MIT"
+}

@@ -1,15 +1,17 @@
 [package]
 name = "PayPerPrompt"
 version = "1.0.0"
-authors = []
+authors = ["PayPerPrompt Team"]
+edition = "2024.beta"
 
 [addresses]
 PayPerPrompt = "_"
+std = "0x1"
 
-[dependencies.AptosFramework]
-git = "https://github.com/aptos-labs/aptos-core.git"
-rev = "mainnet"
-subdir = "aptos-move/framework/aptos-framework"
+[dependencies.MoveStdlib]
+git = "https://github.com/move-language/move.git"
+rev = "main"
+subdir = "language/move-stdlib"
 
 [dev-addresses]
-PayPerPrompt = "0x1"
+PayPerPrompt = "0x42"

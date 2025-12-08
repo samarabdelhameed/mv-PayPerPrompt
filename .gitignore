@@ -13,3 +13,4 @@ target/
 coverage/
 .vscode/
 .idea/
+.vercel
