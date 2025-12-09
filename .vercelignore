@@ -1,0 +1,10 @@
+node_modules
+.git
+.DS_Store
+*.log
+contract/node_modules
+contract/build
+relay/node_modules
+analytics/node_modules
+mobile/node_modules
+monitoring/node_modules
