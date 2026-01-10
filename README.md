@@ -2,7 +2,7 @@
 
 > Decentralized AI agent payment infrastructure on Movement blockchain - implementing x402 payment standard for seamless agent monetization.
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?style=for-the-badge&logo=vercel)](https://mv-payperprompt-3x9s1chih-samarabdelhameeds-projects-df99c328.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?style=for-the-badge&logo=vercel)](https://mv-payperprompt.vercel.app/)
 [![Contract](https://img.shields.io/badge/Contract-Movement%20Testnet-blue?style=for-the-badge)](https://explorer.movementlabs.xyz/account/0x76ed58b619ab6c6071d1830cf9db04728e2d4d6170153e8d5ad96346ab09bbc8?network=testnet)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/samarabdelhameed/mv-PayPerPrompt)
 
@@ -22,7 +22,7 @@ PayPerPrompt is a decentralized payment infrastructure built on Movement blockch
 
 | Resource | URL |
 |----------|-----|
-| **🌐 Web App** | https://mv-payperprompt-3x9s1chih-samarabdelhameeds-projects-df99c328.vercel.app/ |
+| **🌐 Web App** | https://mv-payperprompt.vercel.app/ |
 | **📦 GitHub** | https://github.com/samarabdelhameed/mv-PayPerPrompt |
 | **🔗 Contract Explorer** | [View on Movement Explorer](https://explorer.movementlabs.xyz/account/0x76ed58b619ab6c6071d1830cf9db04728e2d4d6170153e8d5ad96346ab09bbc8?network=testnet) |
 
@@ -473,7 +473,7 @@ For issues and questions, open an issue on GitHub.
 | **Revenue Model (85/15 Split)** | ✅ | `PaymentSplitter.move` - Automated distribution |
 | **Smart Contracts Deployed** | ✅ | 7 modules on Movement Testnet |
 | **Privy Integration** | ✅ | App ID: `cme9x2lzy00exgs0b3tlu9vbh` |
-| **Live Web Application** | ✅ | https://mv-payperprompt-3x9s1chih-samarabdelhameeds-projects-df99c328.vercel.app/ |
+| **Live Web Application** | ✅ | https://mv-payperprompt.vercel.app/ |
 | **Real Blockchain Data** | ✅ | No mock data - 100% on-chain |
 | **E2E Payment Flow** | ✅ | Invoice created & verified |
 | **Documentation** | ✅ | Complete README with all details |
