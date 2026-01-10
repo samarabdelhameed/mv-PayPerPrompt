@@ -4,13 +4,13 @@ version = "1.0.0"
 authors = ["PayPerPrompt Team"]
 
 [addresses]
-PayPerPrompt = "_"
+PayPerPrompt = "0x76ed58b619ab6c6071d1830cf9db04728e2d4d6170153e8d5ad96346ab09bbc8"
 std = "0x1"
 aptos_framework = "0x1"
 
 [dependencies.AptosFramework]
 git = "https://github.com/aptos-labs/aptos-core.git"
-rev = "mainnet"
+rev = "testnet"
 subdir = "aptos-move/framework/aptos-framework"
 
 [dev-addresses]
