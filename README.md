@@ -51,6 +51,75 @@ PayPerPrompt is a decentralized payment infrastructure built on Movement blockch
 - `fee_manager` - Platform fee configuration
 - `timestamp` - Time utilities wrapper
 
+## ✅ Verification & Test Results
+
+### Blockchain State (Live Data)
+| View Function | Result | Status |
+|---------------|--------|--------|
+| `get_total_agents` | `1` | ✅ Agent registered |
+| `get_total_staked` | `1,000,000` | ✅ 1 MOVE staked |
+| `get_payment_stats` | `[0,0,0,0,0]` | ✅ Ready for payments |
+| `get_invoice_stats` | `[0,0,0,0,0]` | ✅ Invoice system ready |
+
+### API Endpoints (Real Blockchain Data)
+```bash
+# Health Check
+curl http://localhost:3000/health
+# Response: {"status":"ok","timestamp":1768035316624}
+
+# Get Agents (from blockchain)
+curl http://localhost:3000/api/agents
+# Response:
+{
+  "success": true,
+  "total": 1,
+  "totalStaked": "1000000",
+  "agents": [],
+  "source": "blockchain",
+  "contractAddress": "0xebbd28cf467283f883ea0d839cdd5d5baa33d8acb6466a65de8c2f52fdf6e684"
+}
+
+# Get Metrics (from PaymentSplitter)
+curl http://localhost:3000/api/metrics
+# Response:
+{
+  "total_payments": "0",
+  "total_volume": "0",
+  "total_earnings": "0",
+  "total_fees": "0",
+  "active_streams": "0"
+}
+
+# Create Invoice (E2E Test)
+curl -X POST http://localhost:3000/api/invoice \
+  -H "Content-Type: application/json" \
+  -d '{"agentAddress":"0xebbd28...","amount":"1000","metadata":"Test"}'
+# Response:
+{
+  "success": true,
+  "invoiceId": "INV-1768035316624-f59mcgba5",
+  "payload": {
+    "function": "0xebbd28cf...::x402_invoice_handler::create_invoice",
+    "arguments": ["0xebbd28cf...", "0x0", "1000", "Test", "3600"]
+  }
+}
+```
+
+## 🏆 Project Achievements
+
+| Achievement | Status | Details |
+|-------------|--------|---------|
+| Smart Contracts Deployed | ✅ | 7 modules on Aptos Devnet |
+| All Modules Initialized | ✅ | AgentRegistry, TokenVault, PaymentSplitter, X402, FeeManager |
+| First Agent Registered | ✅ | "PayPerPrompt AI Agent" with 1 MOVE stake |
+| Relay Server Operational | ✅ | Real blockchain integration (no mock data) |
+| Web Frontend Live | ✅ | Demo Mode enabled for testing |
+| E2E Invoice Creation | ✅ | `INV-1768035316624-f59mcgba5` |
+| 85/15 Revenue Split | ✅ | Implemented in PaymentSplitter |
+| x402 Protocol | ✅ | Full invoice lifecycle support |
+| Rate Limiting | ✅ | 100 req/min per IP |
+| GitHub Deployed | ✅ | All code pushed to main |
+
 ## 🏗️ Project Structure
 
 ```
