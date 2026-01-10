@@ -9,11 +9,11 @@ services:
     rootDir: relay
     envVars:
       - key: APTOS_NODE_URL
-        value: https://fullnode.devnet.aptoslabs.com
+        value: https://testnet.movementnetwork.xyz/v1
       - key: CONTRACT_ADDRESS
-        value: 0xebbd28cf467283f883ea0d839cdd5d5baa33d8acb6466a65de8c2f52fdf6e684
+        value: 0x76ed58b619ab6c6071d1830cf9db04728e2d4d6170153e8d5ad96346ab09bbc8
       - key: PLATFORM_ADDRESS
-        value: 0xebbd28cf467283f883ea0d839cdd5d5baa33d8acb6466a65de8c2f52fdf6e684
+        value: 0x76ed58b619ab6c6071d1830cf9db04728e2d4d6170153e8d5ad96346ab09bbc8
       - key: PORT
         value: 3000
       - key: RATE_LIMIT_WINDOW_MS
