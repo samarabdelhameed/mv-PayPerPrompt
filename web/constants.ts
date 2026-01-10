@@ -2,7 +2,7 @@ import { Agent, Transaction } from './types';
 
 // API Configuration - Auto-switches between local and production
 export const API_URL = typeof window !== 'undefined' && window.location.hostname !== 'localhost'
-  ? 'https://payperprompt-relay.onrender.com' // Production Render URL (update after deploy)
+  ? '' // Relative path for Vercel Serverless // Production Render URL (update after deploy)
   : 'http://localhost:3000';
 
 // Contract Configuration
