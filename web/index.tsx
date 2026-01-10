@@ -25,7 +25,7 @@ if (DEMO_MODE) {
   root.render(
     <React.StrictMode>
       <PrivyProvider
-        appId={import.meta.env.VITE_PRIVY_APP_ID || "clux0v8e200px000000000000"}
+        appId={import.meta.env.VITE_PRIVY_APP_ID || "cme9x2lzy00exgs0b3tlu9vbh"}
         config={{
           loginMethods: ['email', 'wallet', 'google', 'github'],
           appearance: {
