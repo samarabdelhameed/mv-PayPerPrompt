@@ -393,7 +393,7 @@ module PayPerPrompt::token_vault {
         admin: &signer,
         account_addr: address,
         lock_duration: u64
-    ) acquires Balance, VaultStats {
+    ) acquires Balance {
         let admin_addr = signer::address_of(admin);
         assert!(admin_addr == @PayPerPrompt, ENOT_AUTHORIZED);
         assert!(exists<Balance>(account_addr), EACCOUNT_NOT_FOUND);

@@ -196,7 +196,7 @@ module PayPerPrompt::agent_registry {
         model_provider: u8,
         model_name: String,
         initial_stake: u128
-    ) acquires AgentCounter, AgentStats, AgentIndex, CategoryIndex, OwnerAgents {
+    ) acquires AgentCounter, AgentStats, AgentIndex, CategoryIndex, OwnerAgents, AgentEvents {
         let owner_addr = signer::address_of(owner);
         let now = timestamp::now_seconds();
         
@@ -344,7 +344,7 @@ module PayPerPrompt::agent_registry {
         owner: &signer,
         agent_id: u64,
         amount: u128
-    ) acquires Agent, AgentStats, AgentEvents {
+    ) acquires Agent, AgentStats {
         let owner_addr = signer::address_of(owner);
         let now = timestamp::now_seconds();
         
@@ -367,7 +367,7 @@ module PayPerPrompt::agent_registry {
         agent_id: u64,
         amount: u128,
         reason: String
-    ) acquires Agent, AgentStats, AgentEvents {
+    ) acquires AgentEvents {
         let admin_addr = signer::address_of(admin);
         assert!(admin_addr == @PayPerPrompt, ENOT_AGENT_OWNER);
         

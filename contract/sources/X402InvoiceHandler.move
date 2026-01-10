@@ -14,7 +14,7 @@ module PayPerPrompt::x402_invoice_handler {
     use PayPerPrompt::timestamp;
     use PayPerPrompt::payment_splitter;
     use PayPerPrompt::agent_registry;
-    use PayPerPrompt::token_vault;
+    // token_vault is used via payment_splitter
 
     // ====================== ERRORS ======================
     const EINVOICE_NOT_FOUND: u64 = 300;
@@ -180,7 +180,7 @@ module PayPerPrompt::x402_invoice_handler {
 
         // Create invoice
         let invoice = Invoice {
-            invoice_id: copy invoice_id,
+            invoice_id,
             nonce,
             agent_address: agent_addr,
             payer_address,
@@ -238,17 +238,18 @@ module PayPerPrompt::x402_invoice_handler {
 
         // Generate invoice ID
         let invoice_id = generate_invoice_id(agent_addr, nonce);
+        let expires_at = now + duration_seconds + 3600; // Duration + 1 hour buffer
 
         // Create streaming invoice
         let invoice = Invoice {
-            invoice_id: copy invoice_id,
+            invoice_id,
             nonce,
             agent_address: agent_addr,
             payer_address,
             amount: total_amount,
             status: STATUS_PENDING,
             created_at: now,
-            expires_at: now + duration_seconds + 3600, // Duration + 1 hour buffer
+            expires_at,
             paid_at: 0,
             metadata,
             is_streaming: true,
@@ -268,7 +269,7 @@ module PayPerPrompt::x402_invoice_handler {
             agent_address: agent_addr,
             payer_address,
             amount: total_amount,
-            expires_at: invoice.expires_at,
+            expires_at,
             is_streaming: true,
             timestamp: now,
         });
@@ -310,7 +311,7 @@ module PayPerPrompt::x402_invoice_handler {
 
         // Emit event
         emit_paid(InvoicePaidEvent {
-            invoice_id: copy invoice.invoice_id,
+            invoice_id: invoice.invoice_id,
             nonce: invoice.nonce,
             payer_address: payer_addr,
             agent_address: agent_addr,
@@ -361,7 +362,7 @@ module PayPerPrompt::x402_invoice_handler {
 
         // Emit event
         emit_paid(InvoicePaidEvent {
-            invoice_id: copy invoice.invoice_id,
+            invoice_id: invoice.invoice_id,
             nonce: invoice.nonce,
             payer_address: payer_addr,
             agent_address: agent_addr,
@@ -394,7 +395,7 @@ module PayPerPrompt::x402_invoice_handler {
 
         // Emit event
         emit_status(InvoiceStatusEvent {
-            invoice_id: copy invoice.invoice_id,
+            invoice_id: invoice.invoice_id,
             old_status,
             new_status: STATUS_CANCELLED,
             timestamp: timestamp::now_seconds(),
@@ -424,7 +425,7 @@ module PayPerPrompt::x402_invoice_handler {
 
         // Emit event
         emit_status(InvoiceStatusEvent {
-            invoice_id: copy invoice.invoice_id,
+            invoice_id: invoice.invoice_id,
             old_status,
             new_status: STATUS_EXPIRED,
             timestamp: now,
@@ -439,7 +440,7 @@ module PayPerPrompt::x402_invoice_handler {
         assert!(exists<Invoice>(agent_addr), EINVOICE_NOT_FOUND);
         let invoice = borrow_global<Invoice>(agent_addr);
         (
-            copy invoice.invoice_id,
+            invoice.invoice_id,
             invoice.nonce,
             invoice.amount,
             invoice.status,

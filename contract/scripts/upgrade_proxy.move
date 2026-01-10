@@ -1,5 +1,5 @@
 module PayPerPrompt::UpgradeProxy {
-    use aptos_framework::account;
+    use std::signer;
 
     /// Proxy for upgradeable contracts
     struct UpgradeCapability has key {

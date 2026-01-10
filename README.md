@@ -1,6 +1,10 @@
-# PayPerPrompt
+# PayPerPrompt 🚀
 
 > Decentralized AI agent payment infrastructure on Movement blockchain - implementing x402 payment standard for seamless agent monetization.
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?style=for-the-badge&logo=vercel)](https://mv-payperprompt.vercel.app/)
+[![Contract](https://img.shields.io/badge/Contract-Aptos%20Devnet-blue?style=for-the-badge)](https://explorer.aptoslabs.com/account/0xebbd28cf467283f883ea0d839cdd5d5baa33d8acb6466a65de8c2f52fdf6e684?network=devnet)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/samarabdelhameed/mv-PayPerPrompt)
 
 ## 🌟 Overview
 
@@ -13,6 +17,39 @@ PayPerPrompt is a decentralized payment infrastructure built on Movement blockch
 - **x402 Standard**: Full invoice handling and payment verification
 - **Rate Limiting**: Built-in spam protection and abuse prevention
 - **Live Analytics**: Real-time blockchain event indexing and metrics dashboard
+
+## 🚀 Live Deployment
+
+| Resource | URL |
+|----------|-----|
+| **🌐 Web App** | https://mv-payperprompt.vercel.app/ |
+| **📦 GitHub** | https://github.com/samarabdelhameed/mv-PayPerPrompt |
+| **🔗 Contract Explorer** | [View on Aptos Explorer](https://explorer.aptoslabs.com/account/0xebbd28cf467283f883ea0d839cdd5d5baa33d8acb6466a65de8c2f52fdf6e684?network=devnet) |
+
+## 🔗 Deployed Contracts
+
+| Network | Contract Address | Status |
+|---------|------------------|--------|
+| **Aptos Devnet** | `0xebbd28cf467283f883ea0d839cdd5d5baa33d8acb6466a65de8c2f52fdf6e684` | ✅ Live |
+
+### Deployment Transactions
+| Module | Transaction Hash |
+|--------|------------------|
+| Contract Publish | [`0x93db22c2...`](https://explorer.aptoslabs.com/txn/0x93db22c26f0702df39121f96ccab962579dd6e02c0540e664f4aa3908b7488e3?network=devnet) |
+| Agent Registry Init | [`0x3ac50676...`](https://explorer.aptoslabs.com/txn/0x3ac50676bb6cb5cb558f08e29f7e04f345f58a4fa4c1e9f49210d0a2ea1d601f?network=devnet) |
+| Token Vault Init | [`0x795a8242...`](https://explorer.aptoslabs.com/txn/0x795a8242b71a666199bff81b05bc36248466000f2368bd133b9d55d8ee1cbf70?network=devnet) |
+| Payment Splitter Init | [`0x1e700cd4...`](https://explorer.aptoslabs.com/txn/0x1e700cd45ba6fe9aae6ea491a5ad61b29dcd3b9e5e79f282ddc1b8c3d7c1eb10?network=devnet) |
+| X402 Invoice Init | [`0x10f92381...`](https://explorer.aptoslabs.com/txn/0x10f9238161e026bea2c6d5e948045dfc494cc21e488761109d69cf1df3739a24?network=devnet) |
+| Fee Manager Init | [`0xd430da58...`](https://explorer.aptoslabs.com/txn/0xd430da58469c4fc6aed3d8598a02b0f7f43df5d43bff2316eec0c445f021b974?network=devnet) |
+| First Agent Registered | [`0x85a06697...`](https://explorer.aptoslabs.com/txn/0x85a06697201f83b2de69ce2eb301d2a880c4bf2619ac6dd5e083680bc9f212b0?network=devnet) |
+
+### Deployed Modules
+- `agent_registry` - Agent registration and reputation management
+- `payment_splitter` - 85/15 revenue distribution (Agent/Platform)
+- `x402_invoice_handler` - x402 payment protocol implementation
+- `token_vault` - Balance management and internal transfers
+- `fee_manager` - Platform fee configuration
+- `timestamp` - Time utilities wrapper
 
 ## 🏗️ Project Structure
 
@@ -76,8 +113,8 @@ PayPerPrompt/
 
 ```bash
 # Clone repository
-git clone <repository-url>
-cd PayPerPrompt
+git clone https://github.com/samarabdelhameed/mv-PayPerPrompt.git
+cd mv-PayPerPrompt
 
 # Install Aptos CLI
 curl -fsSL "https://aptos.dev/scripts/install_cli.py" | python3
@@ -96,8 +133,8 @@ cd mobile/telegram_bot && npm install && cd ..
 cp relay/.env.example relay/.env
 # Configure:
 # - APTOS_NODE_URL=https://fullnode.devnet.aptoslabs.com
-# - CONTRACT_ADDRESS=0x1
-# - PLATFORM_ADDRESS=0x2
+# - CONTRACT_ADDRESS=0xebbd28cf467283f883ea0d839cdd5d5baa33d8acb6466a65de8c2f52fdf6e684
+# - PLATFORM_ADDRESS=0xebbd28cf467283f883ea0d839cdd5d5baa33d8acb6466a65de8c2f52fdf6e684
 # - PORT=3000
 ```
 
@@ -143,9 +180,34 @@ cd analytics && npm start
 ### Web Interface (Port 5173)
 
 - Agent discovery dashboard
-- Aptos wallet connection
+- Wallet connection (Privy supported)
 - Payment processing UI
 - Real-time analytics visualization
+
+### API Response Examples
+
+**GET /api/agents** - List registered agents from blockchain:
+```json
+{
+  "success": true,
+  "total": 1,
+  "totalStaked": "1000000",
+  "agents": [],
+  "source": "blockchain",
+  "contractAddress": "0xebbd28cf467283f883ea0d839cdd5d5baa33d8acb6466a65de8c2f52fdf6e684"
+}
+```
+
+**GET /api/metrics** - Platform metrics from PaymentSplitter:
+```json
+{
+  "total_payments": "0",
+  "total_volume": "0",
+  "total_earnings": "0",
+  "total_fees": "0",
+  "active_streams": "0"
+}
+```
 
 ## ⚙️ System Architecture
 
@@ -311,4 +373,6 @@ For issues and questions, open an issue on GitHub.
 
 ---
 
-**Built with ❤️ for the decentralized AI economy**
+**Built with ❤️ for the Movement Hackathon - Best x402 App on Movement**
+
+*Last Updated: January 10, 2026*
