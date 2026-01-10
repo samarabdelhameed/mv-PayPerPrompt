@@ -9,7 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors());
+app.use(cors({ origin: '*' })); // Allow all origins for Hackathon Demo
 app.use(express.json());
 
 // Rate limiting
@@ -20,8 +20,13 @@ const rateLimiter = new RateLimiter({
 app.use(rateLimiter.middleware());
 
 // Routes
-const x402Router = new X402Router(process.env.APTOS_NODE_URL);
-app.use('/api', x402Router.getRouter());
+try {
+  const x402Router = new X402Router(process.env.APTOS_NODE_URL);
+  app.use('/api', x402Router.getRouter());
+} catch (error) {
+  console.error("Failed to initialize X402Router:", error);
+  // Do not crash, just log. Routes won't work but health check will.
+}
 
 // Health check
 app.get('/health', (req, res) => {
