@@ -113,12 +113,22 @@ curl -X POST http://localhost:3000/api/invoice \
 | All Modules Initialized | ✅ | AgentRegistry, TokenVault, PaymentSplitter, X402, FeeManager |
 | First Agent Registered | ✅ | "PayPerPrompt AI Agent" with 1 MOVE stake |
 | Relay Server Operational | ✅ | Real blockchain integration (no mock data) |
-| Web Frontend Live | ✅ | Demo Mode enabled for testing |
+| Web Frontend Live | ✅ | Demo Mode + Production Privy enabled |
+| Privy Authentication | ✅ | App ID: `cme9x2lzy00exgs0b3tlu9vbh` |
 | E2E Invoice Creation | ✅ | `INV-1768035316624-f59mcgba5` |
 | 85/15 Revenue Split | ✅ | Implemented in PaymentSplitter |
 | x402 Protocol | ✅ | Full invoice lifecycle support |
 | Rate Limiting | ✅ | 100 req/min per IP |
 | GitHub Deployed | ✅ | All code pushed to main |
+
+## 🔐 Authentication (Privy)
+
+| Config | Value |
+|--------|-------|
+| **App ID** | `cme9x2lzy00exgs0b3tlu9vbh` |
+| **Client ID** | `client-WY6PexyMJYK7S4F8rhryneWnoinMakgRChxaEDNj32sxi` |
+| **Allowed Origins** | `http://localhost:5173`, `https://mv-payperprompt.vercel.app` |
+| **Login Methods** | Email, Wallet, Google, GitHub |
 
 ## 🏗️ Project Structure
 
