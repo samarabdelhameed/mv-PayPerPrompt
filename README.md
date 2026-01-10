@@ -120,10 +120,12 @@ curl -X POST http://localhost:3000/api/invoice \
 | Relay Server Operational | ✅ | Real blockchain integration (no mock data) |
 | Web Frontend Live | ✅ | Demo Mode + Production Privy enabled |
 | Privy Authentication | ✅ | App ID: `cme9x2lzy00exgs0b3tlu9vbh` |
+| **Privy Embedded Wallets** | ✅ | `createOnLogin: 'users-without-wallets'` |
 | E2E Invoice Creation | ✅ | `INV-1768035316624-f59mcgba5` |
-| 85/15 Revenue Split | ✅ | Implemented in PaymentSplitter |
+| 85/15 Revenue Split | ✅ | `AGENT_SHARE_BPS: 8500`, `PLATFORM_SHARE_BPS: 1500` |
 | x402 Protocol | ✅ | Full invoice lifecycle support |
 | Rate Limiting | ✅ | 100 req/min per IP |
+| API Auto-Switch | ✅ | `API_URL` switches between localhost/production |
 | GitHub Deployed | ✅ | All code pushed to main |
 
 ## 🔐 Authentication (Privy)
@@ -134,6 +136,13 @@ curl -X POST http://localhost:3000/api/invoice \
 | **Client ID** | `client-WY6PexyMJYK7S4F8rhryneWnoinMakgRChxaEDNj32sxi` |
 | **Allowed Origins** | `http://localhost:5173`, `https://mv-payperprompt.vercel.app` |
 | **Login Methods** | Email, Wallet, Google, GitHub |
+| **Embedded Wallets** | ✅ `createOnLogin: 'users-without-wallets'` |
+
+### Privy Bounty Features:
+- ✅ Auto-create embedded wallets for new users (no crypto experience needed)
+- ✅ Social login (Email, Google, GitHub)
+- ✅ Dark theme with neon accent
+- ✅ Smooth onboarding flow
 
 ## 🏗️ Project Structure
 
