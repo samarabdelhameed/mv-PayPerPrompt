@@ -47,13 +47,12 @@ We are building the future of decentralized AI agent monetization.
 "Now, let's make a request. When I click verify, three things happen:
 1.  The Relay Server requests an invoice from the Smart Contract.
 2.  The Contract creates a pending invoice using the x402 standard.
-3.  My wallet is prompted to sign."
+3.  My wallet handles the x402 signature."
 
 **Action:**
 4.  **Show the Notifications:** Point out "Invoice Created: INV-..." toast.
-5.  **Show Signing:** "I'm signing this transaction with my Privy embedded wallet. It's fast and gas-efficient on Movement."
-6.  **Wait for Spinner:** "Processing on-chain... verifying payment..."
-7.  **Result:** Show the AI response appearing on screen. "And there it is! The payment unlocked the service instantly."
+5.  **Highlight Speed:** "Watch the logs on the right. The transaction is signed and finalized on Movement Testnet almost instantly."
+6.  **Result:** Show the AI response appearing on screen. "And there it is! The payment unlocked the service in under a second."
 
 ---
 

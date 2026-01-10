@@ -102,7 +102,7 @@ const App: React.FC = () => {
       {/* Demo Mode Banner */}
       {DEMO_MODE && demoAuthenticated && (
         <div className="bg-gradient-to-r from-green-600 to-emerald-600 text-white text-center py-1 text-sm font-medium">
-          🚀 Demo Mode | Contract: 0xebbd28...e684 | Network: Aptos Devnet
+          🚀 Demo Mode | Contract: 0x76ed...bbc8 | Network: Movement Testnet
         </div>
       )}
 
