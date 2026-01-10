@@ -8,8 +8,8 @@ import { AgentDashboardView } from './views/AgentDashboardView';
 import { LiveAnalyticsView } from './views/LiveAnalyticsView';
 import { Navbar } from './components/Navbar';
 
-// Demo Mode - Works without Privy for hackathon demo
-const DEMO_MODE = true;
+// Demo Mode - Set to false to enable full Privy authentication for the video
+const DEMO_MODE = false;
 
 const App: React.FC = () => {
   // Demo mode state

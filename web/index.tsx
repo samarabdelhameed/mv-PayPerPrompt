@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 
 // Demo Mode - Set to false for production with Privy authentication
-const DEMO_MODE = true;
+const DEMO_MODE = false;
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
