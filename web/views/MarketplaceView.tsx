@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '../components/Button';
 import { Search, Filter, Star, Zap, Check, Info } from 'lucide-react';
 import { Agent } from '../types';
+import { API_URL, MOCK_AGENTS } from '../constants';
 
 interface MarketplaceViewProps {
   onSelectAgent: (agent: Agent) => void;
@@ -15,7 +16,7 @@ export const MarketplaceView: React.FC<MarketplaceViewProps> = ({ onSelectAgent 
   useEffect(() => {
     const fetchAgents = async () => {
       try {
-        const res = await fetch('http://localhost:3000/api/agents');
+        const res = await fetch(`${API_URL}/api/agents`);
         const data = await res.json();
         // Enrich agents with mock images if they don't have them
         const enriched = data.agents.map((a: any, i: number) => ({

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { LineChart, Line, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
+import { API_URL } from '../constants';
 import { NeuralBackground } from '../components/NeuralBackground';
 import { Wallet, Github, Globe, ArrowRight, Activity } from 'lucide-react';
 
@@ -46,7 +48,7 @@ export const LoginView: React.FC<LoginViewProps> = ({ onLogin }) => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await fetch('http://localhost:3000/api/metrics');
+        const res = await fetch(`${API_URL}/api/metrics`);
         const data = await res.json();
         setStats({
           agents: '42', // Example for now, or match relay

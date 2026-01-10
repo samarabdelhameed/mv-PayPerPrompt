@@ -1,5 +1,14 @@
 import { Agent, Transaction } from './types';
 
+// API Configuration - Auto-switches between local and production
+export const API_URL = typeof window !== 'undefined' && window.location.hostname !== 'localhost'
+  ? 'https://payperprompt-relay.onrender.com' // Production Render URL (update after deploy)
+  : 'http://localhost:3000';
+
+// Contract Configuration
+export const CONTRACT_ADDRESS = '0xebbd28cf467283f883ea0d839cdd5d5baa33d8acb6466a65de8c2f52fdf6e684';
+export const NETWORK = 'devnet';
+export const APTOS_NODE_URL = 'https://fullnode.devnet.aptoslabs.com';
 export const MOCK_AGENTS: Agent[] = [
   {
     id: 'agent-a',

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 
-// Demo Mode - Run without Privy for hackathon demonstration
+// Demo Mode - Set to false for production with Privy authentication
 const DEMO_MODE = true;
 
 const rootElement = document.getElementById('root');
@@ -20,7 +20,7 @@ if (DEMO_MODE) {
     </React.StrictMode>
   );
 } else {
-  // Production mode with Privy - requires valid PRIVY_APP_ID
+  // Production mode with Privy - Full wallet integration
   const { PrivyProvider } = require('@privy-io/react-auth');
   root.render(
     <React.StrictMode>
@@ -32,6 +32,16 @@ if (DEMO_MODE) {
             theme: 'dark',
             accentColor: '#39FF14',
             showWalletLoginFirst: false,
+          },
+          // Embedded Wallets - KEY for Privy Bounty!
+          embeddedWallets: {
+            createOnLogin: 'users-without-wallets', // Auto-create wallet for new users
+            noPromptOnSignature: false,
+          },
+          // Legal
+          legal: {
+            termsAndConditionsUrl: 'https://mv-payperprompt.vercel.app/terms',
+            privacyPolicyUrl: 'https://mv-payperprompt.vercel.app/privacy',
           },
         }}
       >

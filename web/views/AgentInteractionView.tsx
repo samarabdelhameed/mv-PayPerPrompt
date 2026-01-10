@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useWallets } from '@privy-io/react-auth';
 import { AptosClient } from 'aptos';
 import { Agent, ChatMessage, SubEvent } from '../types';
-import { SCENARIO_PROMPT } from '../constants';
+import { SCENARIO_PROMPT, API_URL, APTOS_NODE_URL } from '../constants';
 import { Button } from '../components/Button';
 import { Send, Terminal, Cpu, ArrowRight, Zap, Play, ExternalLink, Bolt, Share2, CheckCircle, Copy, Shield, Twitter } from 'lucide-react';
 
@@ -23,8 +23,8 @@ export const AgentInteractionView: React.FC<AgentInteractionViewProps> = ({ agen
 
   const bottomRef = useRef<HTMLDivElement>(null);
 
-  // Initialize Aptos Client (Testnet)
-  const client = new AptosClient('https://fullnode.devnet.aptoslabs.com');
+  // Initialize Aptos Client
+  const client = new AptosClient(APTOS_NODE_URL);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -41,7 +41,7 @@ export const AgentInteractionView: React.FC<AgentInteractionViewProps> = ({ agen
 
     try {
       // 1. Request x402 Invoice from Relay
-      const relayRes = await fetch('http://localhost:3000/api/invoice', {
+      const relayRes = await fetch(`${API_URL}/api/invoice`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -89,7 +89,7 @@ export const AgentInteractionView: React.FC<AgentInteractionViewProps> = ({ agen
       }]);
 
       // 3. Callback to Relay for AI execution
-      const payRes = await fetch(`http://localhost:3000/api/pay/${invoiceId}`, {
+      const payRes = await fetch(`${API_URL}/api/pay/${invoiceId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ txnHash: mockTxHash })
@@ -158,8 +158,8 @@ export const AgentInteractionView: React.FC<AgentInteractionViewProps> = ({ agen
           {chatHistory.map((msg) => (
             <div key={msg.id} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
               <div className={`max-w-[80%] rounded-2xl p-4 ${msg.role === 'user'
-                  ? 'bg-zinc-800 text-white rounded-tr-none'
-                  : 'bg-neon/5 border border-neon/20 text-zinc-100 rounded-tl-none'
+                ? 'bg-zinc-800 text-white rounded-tr-none'
+                : 'bg-neon/5 border border-neon/20 text-zinc-100 rounded-tl-none'
                 }`}>
                 <div className="whitespace-pre-wrap font-mono text-sm">
                   {msg.content}
