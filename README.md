@@ -2,8 +2,8 @@
 
 > Decentralized AI agent payment infrastructure on Movement blockchain - implementing x402 payment standard for seamless agent monetization.
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?style=for-the-badge&logo=vercel)](https://mv-payperprompt.vercel.app/)
-[![Contract](https://img.shields.io/badge/Contract-Aptos%20Devnet-blue?style=for-the-badge)](https://explorer.aptoslabs.com/account/0xebbd28cf467283f883ea0d839cdd5d5baa33d8acb6466a65de8c2f52fdf6e684?network=devnet)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?style=for-the-badge&logo=vercel)](https://mv-payperprompt-3x9s1chih-samarabdelhameeds-projects-df99c328.vercel.app/)
+[![Contract](https://img.shields.io/badge/Contract-Movement%20Testnet-blue?style=for-the-badge)](https://explorer.movementlabs.xyz/account/0x76ed58b619ab6c6071d1830cf9db04728e2d4d6170153e8d5ad96346ab09bbc8?network=testnet)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/samarabdelhameed/mv-PayPerPrompt)
 
 ## 🌟 Overview
@@ -22,35 +22,28 @@ PayPerPrompt is a decentralized payment infrastructure built on Movement blockch
 
 | Resource | URL |
 |----------|-----|
-| **🌐 Web App** | https://mv-payperprompt.vercel.app/ |
+| **🌐 Web App** | https://mv-payperprompt-3x9s1chih-samarabdelhameeds-projects-df99c328.vercel.app/ |
 | **📦 GitHub** | https://github.com/samarabdelhameed/mv-PayPerPrompt |
-| **🔗 Contract Explorer** | [View on Aptos Explorer](https://explorer.aptoslabs.com/account/0xebbd28cf467283f883ea0d839cdd5d5baa33d8acb6466a65de8c2f52fdf6e684?network=devnet) |
+| **🔗 Contract Explorer** | [View on Movement Explorer](https://explorer.movementlabs.xyz/account/0x76ed58b619ab6c6071d1830cf9db04728e2d4d6170153e8d5ad96346ab09bbc8?network=testnet) |
 
 ## 🔗 Deployed Contracts
 
 | Network | Contract Address | Status |
 |---------|------------------|--------|
-| **Aptos Devnet** | `0xebbd28cf467283f883ea0d839cdd5d5baa33d8acb6466a65de8c2f52fdf6e684` | ✅ Live |
-| **Movement Testnet** | `0x4265c9a8e574cec326c2a6c27e8efbc059452bc0e2d4d28108c824f6c49bcc28` | ⏳ Ready to Deploy |
+| **Movement Testnet** | `0x76ed58b619ab6c6071d1830cf9db04728e2d4d6170153e8d5ad96346ab09bbc8` | ✅ Live |
 
 > **Network Compatibility:** 
-> - Currently live on **Aptos Devnet** (fully functional)
-> - **Movement Testnet profile ready** - Same Move 2 code, switch RPC anytime
-> - Movement RPC: `https://testnet.movementnetwork.xyz/v1`
+> - Currently live on **Movement Testnet** (Chain ID 250)
+> - **RPC URL**: `https://testnet.movementnetwork.xyz/v1`
+> - **Faucet URL**: `https://faucet.testnet.movementnetwork.xyz/`
 
 ### One-Click Deploy Backend
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/samarabdelhameed/mv-PayPerPrompt)
 
 ### Deployment Transactions
-| Module | Transaction Hash |
+| Module | Contract Address |
 |--------|------------------|
-| Contract Publish | [`0x93db22c2...`](https://explorer.aptoslabs.com/txn/0x93db22c26f0702df39121f96ccab962579dd6e02c0540e664f4aa3908b7488e3?network=devnet) |
-| Agent Registry Init | [`0x3ac50676...`](https://explorer.aptoslabs.com/txn/0x3ac50676bb6cb5cb558f08e29f7e04f345f58a4fa4c1e9f49210d0a2ea1d601f?network=devnet) |
-| Token Vault Init | [`0x795a8242...`](https://explorer.aptoslabs.com/txn/0x795a8242b71a666199bff81b05bc36248466000f2368bd133b9d55d8ee1cbf70?network=devnet) |
-| Payment Splitter Init | [`0x1e700cd4...`](https://explorer.aptoslabs.com/txn/0x1e700cd45ba6fe9aae6ea491a5ad61b29dcd3b9e5e79f282ddc1b8c3d7c1eb10?network=devnet) |
-| X402 Invoice Init | [`0x10f92381...`](https://explorer.aptoslabs.com/txn/0x10f9238161e026bea2c6d5e948045dfc494cc21e488761109d69cf1df3739a24?network=devnet) |
-| Fee Manager Init | [`0xd430da58...`](https://explorer.aptoslabs.com/txn/0xd430da58469c4fc6aed3d8598a02b0f7f43df5d43bff2316eec0c445f021b974?network=devnet) |
-| First Agent Registered | [`0x85a06697...`](https://explorer.aptoslabs.com/txn/0x85a06697201f83b2de69ce2eb301d2a880c4bf2619ac6dd5e083680bc9f212b0?network=devnet) |
+| All Modules | [`0x76ed...bbc8`](https://explorer.movementlabs.xyz/account/0x76ed58b619ab6c6071d1830cf9db04728e2d4d6170153e8d5ad96346ab09bbc8?network=testnet) |
 
 ### Deployed Modules
 - `agent_registry` - Agent registration and reputation management
@@ -73,11 +66,11 @@ PayPerPrompt is a decentralized payment infrastructure built on Movement blockch
 ### API Endpoints (Real Blockchain Data)
 ```bash
 # Health Check
-curl http://localhost:3000/health
+curl https://payperprompt-relay.onrender.com/health
 # Response: {"status":"ok","timestamp":1768035316624}
 
 # Get Agents (from blockchain)
-curl http://localhost:3000/api/agents
+curl https://payperprompt-relay.onrender.com/api/agents
 # Response:
 {
   "success": true,
@@ -85,7 +78,7 @@ curl http://localhost:3000/api/agents
   "totalStaked": "1000000",
   "agents": [],
   "source": "blockchain",
-  "contractAddress": "0xebbd28cf467283f883ea0d839cdd5d5baa33d8acb6466a65de8c2f52fdf6e684"
+  "contractAddress": "0x76ed58b619ab6c6071d1830cf9db04728e2d4d6170153e8d5ad96346ab09bbc8"
 }
 
 # Get Metrics (from PaymentSplitter)
@@ -118,7 +111,7 @@ curl -X POST http://localhost:3000/api/invoice \
 
 | Achievement | Status | Details |
 |-------------|--------|---------|
-| Smart Contracts Deployed | ✅ | 7 modules on Aptos Devnet |
+| Smart Contracts Deployed | ✅ | 7 modules on Movement Testnet |
 | All Modules Initialized | ✅ | AgentRegistry, TokenVault, PaymentSplitter, X402, FeeManager |
 | First Agent Registered | ✅ | "PayPerPrompt AI Agent" with 1 MOVE stake |
 | Relay Server Operational | ✅ | Real blockchain integration (no mock data) |
@@ -138,7 +131,7 @@ curl -X POST http://localhost:3000/api/invoice \
 |--------|-------|
 | **App ID** | `cme9x2lzy00exgs0b3tlu9vbh` |
 | **Client ID** | `client-WY6PexyMJYK7S4F8rhryneWnoinMakgRChxaEDNj32sxi` |
-| **Allowed Origins** | `http://localhost:5173`, `https://mv-payperprompt.vercel.app` |
+| **Allowed Origins** | `http://localhost:5173`, `https://mv-payperprompt-3x9s1chih-samarabdelhameeds-projects-df99c328.vercel.app` |
 | **Login Methods** | Email, Wallet, Google, GitHub |
 | **Embedded Wallets** | ✅ `createOnLogin: 'users-without-wallets'` |
 
@@ -229,9 +222,9 @@ cd mobile/telegram_bot && npm install && cd ..
 ```bash
 cp relay/.env.example relay/.env
 # Configure:
-# - APTOS_NODE_URL=https://fullnode.devnet.aptoslabs.com
-# - CONTRACT_ADDRESS=0xebbd28cf467283f883ea0d839cdd5d5baa33d8acb6466a65de8c2f52fdf6e684
-# - PLATFORM_ADDRESS=0xebbd28cf467283f883ea0d839cdd5d5baa33d8acb6466a65de8c2f52fdf6e684
+# - APTOS_NODE_URL=https://testnet.movementnetwork.xyz/v1
+# - CONTRACT_ADDRESS=0x76ed58b619ab6c6071d1830cf9db04728e2d4d6170153e8d5ad96346ab09bbc8
+# - PLATFORM_ADDRESS=0x76ed58b619ab6c6071d1830cf9db04728e2d4d6170153e8d5ad96346ab09bbc8
 # - PORT=3000
 ```
 
@@ -291,7 +284,7 @@ cd analytics && npm start
   "totalStaked": "1000000",
   "agents": [],
   "source": "blockchain",
-  "contractAddress": "0xebbd28cf467283f883ea0d839cdd5d5baa33d8acb6466a65de8c2f52fdf6e684"
+  "contractAddress": "0x76ed58b619ab6c6071d1830cf9db04728e2d4d6170153e8d5ad96346ab09bbc8"
 }
 ```
 
@@ -478,9 +471,9 @@ For issues and questions, open an issue on GitHub.
 |-------------|--------|----------|
 | **x402 Protocol Implementation** | ✅ | `X402InvoiceHandler.move` - Full invoice lifecycle |
 | **Revenue Model (85/15 Split)** | ✅ | `PaymentSplitter.move` - Automated distribution |
-| **Smart Contracts Deployed** | ✅ | 7 modules on Aptos Devnet |
+| **Smart Contracts Deployed** | ✅ | 7 modules on Movement Testnet |
 | **Privy Integration** | ✅ | App ID: `cme9x2lzy00exgs0b3tlu9vbh` |
-| **Live Web Application** | ✅ | https://mv-payperprompt.vercel.app/ |
+| **Live Web Application** | ✅ | https://mv-payperprompt-3x9s1chih-samarabdelhameeds-projects-df99c328.vercel.app/ |
 | **Real Blockchain Data** | ✅ | No mock data - 100% on-chain |
 | **E2E Payment Flow** | ✅ | Invoice created & verified |
 | **Documentation** | ✅ | Complete README with all details |
