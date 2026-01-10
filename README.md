@@ -31,8 +31,12 @@ PayPerPrompt is a decentralized payment infrastructure built on Movement blockch
 | Network | Contract Address | Status |
 |---------|------------------|--------|
 | **Aptos Devnet** | `0xebbd28cf467283f883ea0d839cdd5d5baa33d8acb6466a65de8c2f52fdf6e684` | ✅ Live |
+| **Movement Testnet** | `0x4265c9a8e574cec326c2a6c27e8efbc059452bc0e2d4d28108c824f6c49bcc28` | ⏳ Ready to Deploy |
 
-> **Note:** Deployed on Aptos Devnet which is fully compatible with Movement blockchain (Move 2 smart contracts). Movement Testnet can be used when available.
+> **Network Compatibility:** 
+> - Currently live on **Aptos Devnet** (fully functional)
+> - **Movement Testnet profile ready** - Same Move 2 code, switch RPC anytime
+> - Movement RPC: `https://testnet.movementnetwork.xyz/v1`
 
 ### One-Click Deploy Backend
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/samarabdelhameed/mv-PayPerPrompt)
