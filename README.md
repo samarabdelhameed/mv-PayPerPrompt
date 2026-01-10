@@ -452,6 +452,31 @@ For issues and questions, open an issue on GitHub.
 
 ---
 
+## 🏁 Hackathon Completion Checklist
+
+### M1 Hackathon Requirements:
+
+| Requirement | Status | Evidence |
+|-------------|--------|----------|
+| **x402 Protocol Implementation** | ✅ | `X402InvoiceHandler.move` - Full invoice lifecycle |
+| **Revenue Model (85/15 Split)** | ✅ | `PaymentSplitter.move` - Automated distribution |
+| **Smart Contracts Deployed** | ✅ | 7 modules on Aptos Devnet |
+| **Privy Integration** | ✅ | App ID: `cme9x2lzy00exgs0b3tlu9vbh` |
+| **Live Web Application** | ✅ | https://mv-payperprompt.vercel.app/ |
+| **Real Blockchain Data** | ✅ | No mock data - 100% on-chain |
+| **E2E Payment Flow** | ✅ | Invoice created & verified |
+| **Documentation** | ✅ | Complete README with all details |
+
+### Bounty Targets:
+
+| Bounty | Status | Notes |
+|--------|--------|-------|
+| **Best x402 App** | 🎯 Targeting | Full x402 protocol implementation |
+| **Privy Integration** | 🎯 Targeting | Embedded wallets + social login |
+| **Best Consumer App** | 🎯 Targeting | AI agent marketplace UX |
+
+---
+
 **Built with ❤️ for the Movement Hackathon - Best x402 App on Movement**
 
 *Last Updated: January 10, 2026*
